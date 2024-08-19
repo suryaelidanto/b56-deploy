@@ -9,8 +9,8 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
 const upload = require("./middlewares/uploadFile");
-const dotenv = require("dotenv");
-dotenv.config();
+
+require("dotenv").config();
 
 const port = process.env.PORT || 5000;
 
