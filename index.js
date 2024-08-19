@@ -14,9 +14,7 @@ dotenv.config()
 
 const port = process.env.PORT || 5000;
 
-const sequelize = new Sequelize(process.env.NODE_ENV == "production" ? config.production : config.development, {
-  dialectModule: require("pg")
-});
+const sequelize = new Sequelize(process.env.NODE_ENV == "production" ? config.production : config.development);
 
 // app.set = setting variable global, configuration, dll
 app.set("view engine", "hbs");
