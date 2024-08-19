@@ -9,16 +9,17 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
 const upload = require("./middlewares/uploadFile");
-const dotenv = require("dotenv")
-dotenv.config()
+const dotenv = require("dotenv");
+dotenv.config();
 
 const port = process.env.PORT || 5000;
 
-console.log("is production", process.env.NODE_ENV)
+const envConfig =
+  process.env.NODE_ENV === "production"
+    ? config.production
+    : config.development;
 
-const sequelize = new Sequelize(process.env.NODE_ENV == "production" ? config.production : config.development, {
-  dialectModule: require("pg")
-});
+const sequelize = new Sequelize({ ...envConfig, dialectModule: require("pg") });
 
 // app.set = setting variable global, configuration, dll
 app.set("view engine", "hbs");
